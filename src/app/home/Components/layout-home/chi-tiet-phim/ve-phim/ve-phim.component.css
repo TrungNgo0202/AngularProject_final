@@ -1,0 +1,22 @@
+.ghe{
+    cursor: pointer;
+    background-color: #fff;
+    color: rgb(75,75,75);
+    margin: 0px;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    width:55px;
+    height:30px;
+  }
+  .gheDuocDat{
+    /* Ghế được người khác đặt trước */
+    cursor: no-drop!important;
+    background-color: rgb(235,50,50)!important;
+  }
+  .gheDaDat{
+    background-color: rgb(146, 250, 177);
+  }

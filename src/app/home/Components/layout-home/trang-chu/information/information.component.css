@@ -1,0 +1,29 @@
+section{
+    margin: 10px 0px;
+    text-align: justify;
+    font-family: 'Roboto', sans-serif;
+  }
+  h3{
+    line-height: 1.5;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-left: 15px;
+  }
+  h3::after{
+    display: block;
+    width: 140px;
+    height: 2px;
+    margin-top: 8px;
+    content: '';
+    background-color: orangered;
+  }
+  a{
+    text-decoration: none;
+    color: #000000;
+  }
+  a:hover{
+    text-decoration-line: none;
+    color: orangered;
+  }
+  

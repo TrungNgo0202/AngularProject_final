@@ -1,0 +1,7 @@
+<button class="ghe"
+        (click)="DatVe()"
+        [ngClass]="{'gheDuocDat':ghe.DaDat,'gheDaDat':dangDat}"
+        [disabled]="ghe.DaDat"
+        >{{ghe.STT}}</button>
+
+<br *ngIf="(index+1) % 9 == 0" />

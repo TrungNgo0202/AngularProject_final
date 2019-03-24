@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <h2>Lịch sử đặt phim</h2>
+  <p>User: {{user}} </p>            
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Mã ghế</th>
+        <th>Ngày đặt</th>
+        <th>Giá vé</th>
+        <th>Tên phim</th>
+        <th>Rạp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let veDaDat of film_Booked_History_List | paginate: { itemsPerPage: 20, currentPage: p } ; let stt = index ">
+        <td>{{stt + 1}}</td>
+        <td>{{veDaDat.MaGhe}}</td>
+        <td>{{veDaDat.NgayDat}}</td>
+        <td>{{veDaDat.GiaVe}}</td>
+        <td>{{veDaDat.TenPhim}}</td>
+        <td>{{veDaDat.Rap}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+</div>

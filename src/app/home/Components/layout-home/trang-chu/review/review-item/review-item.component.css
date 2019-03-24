@@ -1,0 +1,53 @@
+.new__item{
+    display: block;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+  }
+  .effect-ruby img{
+    width: 100%;
+      height: 100%;
+      transition-duration: 0.5s;
+        /* Safari */
+        -webkit-transition-duration: 0.5s;
+        /* Mozilla Firefox */
+        -moz-transition-duration: 0.5s;
+        /* Opera */
+        -o-transition-duration: 0.5s;
+        /* IE 9 */
+        -ms-transition-duration: 0.5s;
+  }
+  .effect-ruby:hover img{
+    transform: scale(1.2);
+          -webkit-transform: scale(1.2);
+          -moz-transform: scale(1.2);
+          -o-transform: scale(1.2);
+          -ms-transform: scale(1.2);
+      cursor: pointer;
+  }
+  .new__item .overlay{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+    padding:35px 15px;
+    margin: auto;
+    background: rgba(172, 167, 167, 0.2);
+    color: white;
+    text-align: center;
+  }
+  .new__item .overlay:active{
+    color: lightseagreen;
+    transition: all 200ms;
+  }
+  figure.effect-ruby h2{
+    margin:0
+  }
+  figure.effect-ruby p{
+    padding:1em 0.3rem;
+  }
+  figure.effect-ruby{
+    height: 180px;
+  }
+  

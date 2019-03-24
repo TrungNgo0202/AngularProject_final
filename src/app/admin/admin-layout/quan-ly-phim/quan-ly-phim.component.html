@@ -1,0 +1,185 @@
+<!-- Danh sách phim -->
+<button class="btn btn-primary" data-toggle="modal" data-target="#myAddFilmModal">Thêm phim</button>
+<div role="tabpanel" class="tab-pane fade" id="DanhSachPhim">
+  <div class="input-group">
+    <input type="text" [(ngModel)]="searchText" class="form-control mt-3" placeholder="Nhập tên phim cần tìm">
+
+  </div>
+  <div class="tblDanhSachPhim" id="tblDanhSachPhim">
+    <table class="table">
+      <thead>
+        <th>Mã phim</th>
+        <th>Tên phim</th>
+        <th>Đánh giá</th>
+        <th>Trailer</th>
+        <th>Hình ảnh</th>
+        <th>Ngày khởi chiếu</th>
+      </thead>
+      <p *ngIf="isLoading">Loading data...</p>
+      <tbody id="tblDanhSachNguoiDung">
+        <tr *ngFor="let film of filmArray | userFilter:{ TenPhim:searchText } ; let stt = index">
+
+          <td>{{film.MaPhim}}</td>
+          <td>{{film.TenPhim}}</td>
+          <td>{{film.DanhGia}}</td>
+          <td>{{film.Trailer}}</td>
+          <td><img [src]="film.HinhAnh" class="phim_img"></td>
+          <td>{{film.NgayKhoiChieu}}</td>
+          <button class="btn btn-success" (click)="setFilmValueToForm(film)" data-toggle="modal" data-target="#myModal">Cập nhật</button>
+          <button class="btn btn-danger ml-4" (click)="deleteFilm(film.MaPhim)">Xóa</button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br />
+</div>
+<!--Kết thúc danh sách phim-->
+
+<!-- The Modal -->
+<div class="modal fade" id="myAddFilmModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <form #formThemPhim="ngForm" (ngSubmit)="addFilm(formThemPhim)">
+        <div class="modal-header">
+          <h4 class="modal-title">Thêm Phim</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label>Mã Phim</label>
+            <input name="MaPhim" class="form-control" placeholder="Nhập vào mã phim" ngModel>
+          </div>
+
+          <div class="form-group">
+            <label>Tên Phim</label>
+            <input name="TenPhim" class="form-control" placeholder="Nhập vào tên phim" ngModel>
+          </div>
+
+          <div class="form-group">
+            <label>Trailer</label>
+            <input name="Trailer" class="form-control" placeholder="Nhập vào đường link trailer" ngModel>
+          </div>
+
+          <div class="form-group">
+            <label>Hình Ảnh</label>
+            <input name="HinhAnh" class="form-control" placeholder="Nhập vào đường link hình ảnh" ngModel>
+          </div>
+
+          <div class="form-group">
+            <label>Mô tả</label>
+            <input name="MoTa" class="form-control" placeholder="Nhập vào mô tả phim" ngModel>
+          </div>
+
+          <div class="form-group">
+            <label>Mã nhóm</label>
+            <input name="MaNhom" class="form-control" placeholder="Nhập vào mô tả phim" ngModel>
+          </div>
+
+          <div class="form-group">
+            <label>Ngày khởi chiếu</label>
+            <!-- <form class="form-inline"> -->
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="NgayKhoiChieu" ngbDatepicker #d="ngbDatepicker"
+                  ngModel>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+            <!-- </form> -->
+          </div>
+
+          <div class="form-group">
+            <label>Đánh giá</label>
+            <input name="DanhGia" class="form-control" placeholder="Nhập vào mô tả phim" ngModel>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success form-control" [disabled]="formThemPhim.invalid" type="submit">Thêm phim</button>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Form update người dùng -->
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+
+      <div class="modal-header">
+        <h4 class="modal-title">Cập nhật phim</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <form [formGroup]="filmForm"  (ngSubmit) = updateFilm() >
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Mã Phim</label>
+            <input id="TaiKhoan" disabled class="form-control" formControlName="maphim" >
+          </div>
+
+          <div class="form-group">
+            <label>Tên phim</label>
+            <input id="HoTen" class="form-control" formControlName="tenphim">
+          </div>
+
+          <div class="form-group">
+            <label>Trailer</label>
+            <input id="MatKhau" class="form-control" formControlName="trailer"  >
+          </div>
+
+          <div class="form-group">
+            <label>Hình ảnh</label>
+            <input id="Email" class="form-control" formControlName="hinhanh" >
+          </div>
+
+          <div class="form-group">
+            <label>Mô tả</label>
+            <input id="SoDienThoai" class="form-control" formControlName="mota" >
+          </div>
+
+          <div class="form-group">
+            <label>Mã nhóm</label>
+            <input id="SoDienThoai" class="form-control" formControlName="manhom" >
+          </div>
+
+          <div class="form-group">
+            <label>Ngày khởi chiếu</label>
+            <input id="SoDienThoai" class="form-control" formControlName="ngaykhoichieu" >
+          </div>
+
+          <div class="form-group">
+            <label>Đánh giá</label>
+            <input name="DanhGia" class="form-control" formControlName="danhgia" >
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-success form-control"  type="submit">Cập nhật phim</button>
+          </div>
+
+        </div>
+      </form>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+
+      </div>
+
+    </div>
+  </div>
+</div>

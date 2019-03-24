@@ -1,0 +1,9 @@
+input.ng-invalid.ng-touched{
+    border-left: 3px solid red;
+  }
+  input.ng-valid.ng-touched{
+    border-left: 3px solid green;
+  }
+  h4{
+    color: #f26b38;
+  }

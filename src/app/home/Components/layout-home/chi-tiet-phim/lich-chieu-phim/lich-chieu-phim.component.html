@@ -1,0 +1,5 @@
+<button class=" w-100" (click)="get_InfoSuatChieu()"
+    [ngClass]="{'btn btn-outline-info':Film_schedule_detail.status,'btn btn-outline-success':!Film_schedule_detail.status}">
+    <p class="lead; font-family: 'SF Medium'">Suất chiếu {{Film_schedule_detail.NgayChieuGioChieu | date: "EEEE, MMMM d, y, h:mm a" }}</p>
+</button>
+

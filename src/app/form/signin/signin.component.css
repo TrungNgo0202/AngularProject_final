@@ -1,0 +1,20 @@
+h4{
+    color: #f26b38;
+}
+.sub-text{
+  color: #a0a3a7;
+}
+.btn{
+  background-color: #f26b38;
+}
+.forget-pass{
+  padding: 10px 15px;
+}
+.forget-pass a{
+  text-decoration: none;
+  color: #a0a3a7;
+}
+.forget-pass a:hover{
+  color: #f26b38;
+  transition: all 3ms;
+}

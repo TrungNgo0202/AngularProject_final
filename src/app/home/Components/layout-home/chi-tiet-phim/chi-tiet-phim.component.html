@@ -1,0 +1,50 @@
+<div style="background: linear-gradient(to bottom, rgb(208, 238, 250), transparent 100%);">
+  <div class="row">
+    <img [src]="Film_detail.HinhAnh" width="250px" class="mx-auto">
+    <iframe class="m-auto" width="900" height="506" [src]="Film_detail.Trailer | safe" frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <h1>{{Film_detail.TenPhim}}</h1>
+  <P class="lead">Detail: {{Film_detail.MoTa}}</P>
+  <hr />
+  <div class="container-fluid">
+    <div class="tabMovieContent">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="panel-heading">
+            <h4 class="panel-title">CHỌN SUẤT CHIẾU</h4>
+            <div class="col-12">
+              <app-lich-chieu-phim [Film_schedule_detail]="lichphim" (event_getinfoSuatChieu)="get_InfoSuatChieu($event)"
+                *ngFor="let lichphim of Film_schedule">
+
+              </app-lich-chieu-phim>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="panel-heading">
+            <h4 class="panel-title">CHỌN GHẾ</h4>
+            <app-ve-phim *ngFor="let ghe of Film_chair_list; let stt = index " [ghe]="ghe" [index]="stt"
+              (eventDatVe)="DatVe($event)">
+            </app-ve-phim>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="panel-heading">
+            <h4 class="panel-title">GHẾ ĐÃ ĐẶT</h4>
+            <p *ngFor="let gheDangDat of mangGheDangDat">Ghế số : {{gheDangDat.STT}} - {{gheDangDat.GiaVe}} VND
+              <span style="color:red; cursor: pointer;" (click)="HuyGhe(gheDangDat.MaGhe)">Hủy</span></p>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="panel-heading">
+            <h4 class="panel-title">Tổng tiền</h4>
+            <p>{{Total_money}} VND</p>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary mt-3" (click)="Proceed_booking_ticket()">Tiến hành đặt vé</button>
+    </div>
+
+  </div>
+</div>

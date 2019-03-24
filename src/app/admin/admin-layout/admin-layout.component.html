@@ -1,0 +1,18 @@
+<div class="container-fluid mt-5">
+  <header class="display-4">Quản lý phim và người dùng</header>
+  <!-- Phan tab menu -->
+  <ul class="nav nav-tabs mt-5" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" href="#DanhSachNguoiDung" role="tab" data-toggle="tab" (click)="DoiTab(true)">Danh sách người dùng</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#DanhSachPhim" role="tab" data-toggle="tab" (click)="DoiTab(false)">Danh sách phim</a>
+    </li>
+  </ul>
+  <br />
+  <div class="tab-content">
+    <app-quan-ly-nguoi-dung *ngIf="temp_status"></app-quan-ly-nguoi-dung>
+    <app-quan-ly-phim *ngIf="!temp_status" ></app-quan-ly-phim>
+  </div>
+</div>
+

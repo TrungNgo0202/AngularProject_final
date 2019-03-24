@@ -1,0 +1,22 @@
+<div class="container" style="background: linear-gradient(to bottom, rgb(208, 238, 250), transparent 100%);">
+  <div class="row pt-4">
+    <div class="col-12 text-center">
+      <button class="btn btn-outline-success mr-4" (click)="(ChonLoaiTin('KhuyenMai'))">Khuyến mãi</button>
+      <button class="btn btn-outline-success mr-4" (click)="(ChonLoaiTin('DienAnh'))">Điện Ảnh</button>
+      <button class="btn btn-outline-success" (click)="(ChonLoaiTin('Review'))">Review</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12" [ngSwitch]="loaiTinTuc">
+      <div class="col-12" *ngSwitchCase="'KhuyenMai'">
+        <app-discount></app-discount>
+      </div>
+      <div class="col-12" *ngSwitchCase="'DienAnh'">
+        <app-dienanh></app-dienanh>
+      </div>
+      <div class="col-12" *ngSwitchCase="'Review'">
+        <app-review></app-review>
+      </div>
+    </div>
+  </div>
+</div>
